@@ -1,12 +1,30 @@
 package com.example.movieapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.movieapp.R
+import com.example.movieapp.databinding.ActivityMainBinding
+import com.example.movieapp.mvvm.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    private val viewModel: MainViewModel = MainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.mainActivityButton.setOnClickListener { viewModel.onPressedButton() }
+        viewModel.getValue().observe(this) { buttonState(it) }
+    }
+
+    private fun buttonState(buttonData: MainViewModel.MainData) {
+        when (buttonData.status) {
+            MainViewModel.MainStatus.SHOW_MOVIES -> {
+                startActivity(Intent(this, MoviesActivity::class.java))
+            }
+        }
     }
 }
