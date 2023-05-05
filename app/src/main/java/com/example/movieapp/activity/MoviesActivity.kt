@@ -45,15 +45,18 @@ class MoviesActivity : AppCompatActivity() {
             ),
         )[MoviesViewModel::class.java]
 
+        binding.moviesActivityBackButton.setOnClickListener { viewModel.onBackButtonPressed() }
         viewModel.getValue().observe(this) { updateUI(it) }
     }
 
     private fun updateUI(data: MoviesViewModel.MovieData) {
         when (data.status) {
-            MoviesViewModel.MovieStatus.PRESSED_BUTTON -> {
-                binding.recycler.setHasFixedSize(true)
+            MoviesViewModel.MovieStatus.SHOW_BUTTON_PRESSED -> {
                 binding.recycler.layoutManager = LinearLayoutManager(this)
                 binding.recycler.adapter = MovieAdapter(data.movies)
+            }
+            MoviesViewModel.MovieStatus.BACK_BUTTON_PRESSED -> {
+                finish()
             }
         }
     }

@@ -14,5 +14,6 @@ interface MoviesContract {
     interface ViewModel {
         fun getValue(): LiveData<MoviesViewModel.MovieData>
         fun callService(): Job
+        fun onBackButtonPressed()
     }
 }

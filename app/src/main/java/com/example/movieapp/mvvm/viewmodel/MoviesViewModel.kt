@@ -19,7 +19,7 @@ class MoviesViewModel(private val model: MoviesContract.Model) : ViewModel(), Mo
         withContext(Dispatchers.IO) { model.getMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
-                    mutableLiveData.value = MovieData(MovieStatus.PRESSED_BUTTON, result.data)
+                    mutableLiveData.value = MovieData(MovieStatus.SHOW_BUTTON_PRESSED, result.data)
                 }
                 is CoroutineResult.Failure -> {
                     // TODO
@@ -28,12 +28,16 @@ class MoviesViewModel(private val model: MoviesContract.Model) : ViewModel(), Mo
         }
     }
 
+    override fun onBackButtonPressed() {
+        mutableLiveData.postValue(MovieData(MovieStatus.BACK_BUTTON_PRESSED, emptyList()))
+    }
+
     data class MovieData(
         val status: MovieStatus,
         val movies: List<Movie>,
     )
-
     enum class MovieStatus {
-        PRESSED_BUTTON,
+        SHOW_BUTTON_PRESSED,
+        BACK_BUTTON_PRESSED,
     }
 }

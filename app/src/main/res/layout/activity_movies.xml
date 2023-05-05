@@ -23,11 +23,20 @@
         android:text="@string/movies_activity_title"
         app:layout_constraintTop_toBottomOf="@id/main_activity_title" />
 
+    <Button
+        android:id="@+id/movies_activity_back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/movies_activity_back_button"
+       app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/movies_activity_back_button"
         app:layout_constraintTop_toBottomOf="@id/movies_activity_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
