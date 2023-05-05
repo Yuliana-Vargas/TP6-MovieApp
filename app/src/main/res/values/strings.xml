@@ -3,4 +3,14 @@
     <string name="title">Movie App!!</string>
     <string name="main_activity_description">description</string>
     <string name="main_activity_button">Show</string>
+    <string name="movies_activity_title">Popular Movies</string>
+
+    <string name="card_id">ID: %1$s</string>
+    <string name="card_title">TITLE: %1$s</string>
+    <string name="card_release_date">RELEASE DATE: %1$s</string>
+    <string name="card_vote_average">VOTEAVERAGE: %1$s</string>
+    <string name="card_poster">https://image.tmdb.org/t/p/original%1$s</string>
+
+
+    <string name="content_description">content description</string>
 </resources>

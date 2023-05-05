@@ -8,7 +8,6 @@ import com.example.movieapp.mvvm.contract.MainContract
 class MainViewModel : ViewModel(), MainContract.MainViewModel {
     private val mutableLiveData: MutableLiveData<MainData> = MutableLiveData()
     override fun getValue(): LiveData<MainData> = mutableLiveData
-
     override fun onPressedButton() {
         mutableLiveData.postValue(MainData(MainStatus.SHOW_MOVIES))
     }

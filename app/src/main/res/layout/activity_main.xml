@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/container_margin"
-    tools:context=".activity.MainActivity">
+android:padding="@dimen/container_margin"    tools:context=".activity.MainActivity">
 
     <TextView
         android:id="@+id/main_activity_title"
