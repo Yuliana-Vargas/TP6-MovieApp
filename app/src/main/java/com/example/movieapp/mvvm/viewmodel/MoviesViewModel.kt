@@ -22,7 +22,7 @@ class MoviesViewModel(private val model: MoviesContract.Model) : ViewModel(), Mo
                     mutableLiveData.value = MovieData(MovieStatus.SHOW_BUTTON_PRESSED, result.data)
                 }
                 is CoroutineResult.Failure -> {
-                    // TODO
+                    mutableLiveData.value = MovieData(MovieStatus.EMPTY_STATE, emptyList())
                 }
             }
         }
@@ -36,8 +36,8 @@ class MoviesViewModel(private val model: MoviesContract.Model) : ViewModel(), Mo
         val status: MovieStatus,
         val movies: List<Movie>,
     )
+
     enum class MovieStatus {
-        SHOW_BUTTON_PRESSED,
-        BACK_BUTTON_PRESSED,
+        SHOW_BUTTON_PRESSED, BACK_BUTTON_PRESSED, EMPTY_STATE,
     }
 }

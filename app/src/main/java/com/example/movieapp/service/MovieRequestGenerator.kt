@@ -12,9 +12,7 @@ object MovieRequestGenerator {
 
     private val httpClient = OkHttpClient.Builder()
 
-    private val builder = Retrofit.Builder()
-        .baseUrl(API_MOVIES_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+    private val builder = Retrofit.Builder().baseUrl(API_MOVIES_URL).addConverterFactory(GsonConverterFactory.create())
 
     fun <S> createService(serviceClass: Class<S>): S {
         val retrofit = builder.client(httpClient.build())

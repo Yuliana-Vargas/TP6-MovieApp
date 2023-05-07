@@ -14,4 +14,5 @@
 
     <string name="content_description">content description</string>
     <string name="movies_activity_back_button">Back</string>
+    <string name="movies_activity_error_message">Sorry! No films to show</string>
 </resources>

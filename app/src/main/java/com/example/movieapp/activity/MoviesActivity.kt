@@ -2,6 +2,7 @@ package com.example.movieapp.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
@@ -28,9 +29,7 @@ class MoviesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val dataBase: MoviesRoomDataBase by lazy {
-            Room
-                .databaseBuilder(this, MoviesRoomDataBase::class.java, "Movie-DataBase")
-                .build()
+            Room.databaseBuilder(this, MoviesRoomDataBase::class.java, "Movie-DataBase").build()
         }
 
         viewModel = ViewModelProvider(
@@ -58,7 +57,15 @@ class MoviesActivity : AppCompatActivity() {
             MoviesViewModel.MovieStatus.BACK_BUTTON_PRESSED -> {
                 finish()
             }
+            MoviesViewModel.MovieStatus.EMPTY_STATE -> {
+                showErrorMessage()
+            }
         }
+    }
+
+    private fun showErrorMessage() {
+        binding.recycler.isGone = true
+        binding.movieActivityErrorMessage.isGone = false
     }
 
     override fun onResume() {

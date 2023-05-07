@@ -13,12 +13,20 @@ class MoviesModel(
     override suspend fun getMovies(): CoroutineResult<List<Movie>> {
         return when (val movies = service.getMovies()) {
             is CoroutineResult.Success -> {
-                database.insertMovies(movies.data.results)
-                CoroutineResult.Success(database.getAllMovies())
+                if (movies.data.results.isNotEmpty()) {
+                    database.insertMovies(movies.data.results)
+                    CoroutineResult.Success(database.getAllMovies())
+                } else {
+                    CoroutineResult.Failure(Exception())
+                }
             }
 
             is CoroutineResult.Failure -> {
-                CoroutineResult.Success(database.getAllMovies())
+                if (database.getAllMovies().isNotEmpty()) {
+                    CoroutineResult.Success(database.getAllMovies())
+                } else {
+                    CoroutineResult.Failure(Exception())
+                }
             }
         }
     }
