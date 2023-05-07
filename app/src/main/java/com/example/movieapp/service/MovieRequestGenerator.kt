@@ -7,9 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object MovieRequestGenerator {
     private const val API_MOVIES_URL = "https://api.themoviedb.org"
-
-    private const val API_KEY = "ccb57460d134bcc59021b6c5058394ca"
-
+    private const val API_TOKEN =
+        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2I1NzQ2MGQxMzRiY2M1OTAyMWI2YzUwNTgzOTRjYSIsInN1YiI6IjYyOTdlZDE3M2ZhYmEwMDA5YjFkMDkyOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wuM9MKeQE0x69B6DY5tL2m8E7RWbkrHBCDiZ13aN-JE"
     private val httpClient = OkHttpClient.Builder()
 
     private val builder = Retrofit.Builder().baseUrl(API_MOVIES_URL).addConverterFactory(GsonConverterFactory.create())
@@ -19,8 +18,9 @@ object MovieRequestGenerator {
         val apiKeyInterceptor = Interceptor { chain ->
             val original = chain.request()
             val originalHttpUrl = original.url()
-            val url = originalHttpUrl.newBuilder().addQueryParameter("api_key", API_KEY).build()
+            val url = originalHttpUrl.newBuilder().build()
             val requestBuilder = original.newBuilder().url(url)
+                .header("Authorization", "Bearer $API_TOKEN")
             val request = requestBuilder.build()
             chain.proceed(request)
         }
