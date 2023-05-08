@@ -11,7 +11,7 @@ android:padding="@dimen/container_margin"    tools:context=".activity.MainActivi
         style="@style/TitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:text="@string/main_activity_title"
         app:layout_constraintBottom_toTopOf="@id/main_activity_description"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -6,10 +6,12 @@ import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import com.example.movieapp.R
 import com.example.movieapp.adapter.MovieAdapter
 import com.example.movieapp.database.MovieDataBaseImpl
 import com.example.movieapp.database.MoviesRoomDataBase
 import com.example.movieapp.databinding.ActivityMoviesBinding
+import com.example.movieapp.fragment.ErrorDialogFragment
 import com.example.movieapp.mvvm.contract.MoviesContract
 import com.example.movieapp.mvvm.model.MoviesModel
 import com.example.movieapp.mvvm.viewmodel.MoviesViewModel
@@ -59,8 +61,14 @@ class MoviesActivity : AppCompatActivity() {
             }
             MoviesViewModel.MovieStatus.EMPTY_STATE -> {
                 showErrorMessage()
+                showErrorDialog()
             }
         }
+    }
+
+    private fun showErrorDialog() {
+        val dialog = ErrorDialogFragment.newInstance(getString(R.string.error_dialog_fragment_error_message))
+        dialog.show(supportFragmentManager, ErrorDialogFragment.TAG)
     }
 
     private fun showErrorMessage() {
