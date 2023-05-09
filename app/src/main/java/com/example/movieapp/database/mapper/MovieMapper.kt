@@ -7,7 +7,7 @@ fun Movie.mapToDataBaseMovie(): MovieEntity = MovieEntity(
     id = id,
     title = title,
     posterPath = posterPath,
-    vote_average = vote_average,
+    voteAverage = voteAverage,
 )
 
 fun List<MovieEntity>.mapToLocalMovie(): List<Movie> = map { entity ->
@@ -15,6 +15,6 @@ fun List<MovieEntity>.mapToLocalMovie(): List<Movie> = map { entity ->
         id = entity.id,
         title = entity.title,
         posterPath = entity.posterPath,
-        vote_average = entity.vote_average,
+        voteAverage = entity.voteAverage,
     )
 }

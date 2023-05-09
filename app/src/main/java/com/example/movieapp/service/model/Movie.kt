@@ -10,5 +10,5 @@ data class Movie(
     @SerializedName("poster_path")
     var posterPath: String,
     @SerializedName("vote_average")
-    var vote_average: Double,
+    var voteAverage: Double,
 )

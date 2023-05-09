@@ -8,5 +8,5 @@ class MovieEntity(
     @PrimaryKey var id: Int,
     var title: String,
     var posterPath: String,
-    var vote_average: Double,
+    var voteAverage: Double,
 )
