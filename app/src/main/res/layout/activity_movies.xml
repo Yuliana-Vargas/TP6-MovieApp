@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BackgroundStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/container_margin"
     tools:context=".activity.MoviesActivity">
 
     <TextView
@@ -28,16 +28,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/movies_activity_back_button"
-       app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/movie_activity_error_message"
         style="@style/TitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:text="@string/movies_activity_error_message"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/movies_activity_back_button"
         app:layout_constraintTop_toBottomOf="@id/movies_activity_title" />
 
@@ -45,7 +44,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/none"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/movies_activity_back_button"
         app:layout_constraintTop_toBottomOf="@id/movies_activity_title" />

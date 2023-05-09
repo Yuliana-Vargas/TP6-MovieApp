@@ -4,45 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/container_margin"
-    android:background="@android:color/darker_gray"
+    android:layout_margin="@dimen/container"
+    android:background="@color/light_yellow"
     android:elevation="@dimen/card_elevation"
     tools:context=".activity.MoviesActivity">
 
     <TextView
         android:id="@+id/id"
-        style="@style/TitleStyle"
+        style="@style/DescriptionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/margin_card_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/poster"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="ID: id" />
 
     <TextView
         android:id="@+id/voteAverage"
-        style="@style/TitleStyle"
+        style="@style/DescriptionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_card_item"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="VOTEAVERAGE: vote_average" />
+        app:layout_constraintStart_toEndOf="@id/poster"
+        tools:text="★ vote_average" />
 
     <TextView
         android:id="@+id/title"
-        style="@style/TitleStyle"
-        android:layout_width="match_parent"
+        style="@style/DescriptionStyle"
+        android:layout_width="@dimen/none"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/voteAverage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/poster"
         app:layout_constraintTop_toBottomOf="@id/id"
-        tools:text="TITLE: title" />
+        tools:text="title" />
 
     <ImageView
         android:id="@+id/poster"
-        android:layout_width="@dimen/image_size"
-        android:layout_height="@dimen/image_size"
-        android:layout_marginTop="@dimen/container_margin"
+        android:layout_width="@dimen/image_size_width"
+        android:layout_height="@dimen/image_size_height"
+        android:layout_margin="@dimen/container"
+        android:background="@drawable/solid_border"
         android:contentDescription="@string/item_recycler_content_description"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
