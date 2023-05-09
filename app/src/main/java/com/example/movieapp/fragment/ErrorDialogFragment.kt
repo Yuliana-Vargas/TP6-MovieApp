@@ -1,23 +1,28 @@
 package com.example.movieapp.fragment
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.movieapp.R
+import com.example.movieapp.databinding.CustomDialogBinding
 
 class ErrorDialogFragment : DialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    private lateinit var binding: CustomDialogBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View = binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = CustomDialogBinding.inflate(layoutInflater)
         val message = requireArguments().getString(ARG_MESSAGE)
-        val builder = AlertDialog.Builder(requireActivity())
-        builder.setTitle(getString(R.string.error_dialog_fragment_title))
-            .setMessage(message)
-            .setPositiveButton(getString(R.string.error_dialog_fragment_button_ok)) { dialog: DialogInterface, _: Int ->
-                dialog.dismiss()
-            }
-        return builder.create()
+        binding.errorDialogFragmentMessage.text = message
+        binding.errorDialogFragmentButtonOk.setOnClickListener {
+            dismiss()
+        }
     }
 
     companion object {
