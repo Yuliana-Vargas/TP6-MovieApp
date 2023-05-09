@@ -28,7 +28,7 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
             binding.title.text = itemView.context.getString(R.string.card_title, movie.title)
             binding.voteAverage.text = itemView.context.getString(R.string.card_vote_average, movie.vote_average.toString())
 
-            Glide.with(itemView.context).load(itemView.context.getString(R.string.card_poster, movie.poster_path)).into(binding.poster)
+            Glide.with(itemView.context).load(itemView.context.getString(R.string.card_poster, movie.posterPath)).into(binding.poster)
         }
     }
 }

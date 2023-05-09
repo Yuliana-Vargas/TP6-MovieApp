@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 class MovieEntity(
     @PrimaryKey var id: Int,
     var title: String,
-    var poster_path: String,
+    var posterPath: String,
     var vote_average: Double,
 )
